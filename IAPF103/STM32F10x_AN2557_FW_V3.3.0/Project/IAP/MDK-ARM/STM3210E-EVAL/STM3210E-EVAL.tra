@@ -1,0 +1,38 @@
+*** Creating Trace Output File '.\STM3210E-EVAL\STM3210E-EVAL.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\stm3210e-eval\common.o"'
+### List of Objects: adding '".\stm3210e-eval\download.o"'
+### List of Objects: adding '".\stm3210e-eval\main.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_it.o"'
+### List of Objects: adding '".\stm3210e-eval\ymodem.o"'
+### List of Objects: adding '".\stm3210e-eval\upload.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_dma.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_exti.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_flash.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_gpio.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_i2c.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_rcc.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_sdio.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_spi.o"'
+### List of Objects: adding '".\stm3210e-eval\stm32f10x_usart.o"'
+### List of Objects: adding '".\stm3210e-eval\misc.o"'
+### List of Objects: adding '".\stm3210e-eval\core_cm3.o"'
+### List of Objects: adding '".\stm3210e-eval\system_stm32f10x.o"'
+### List of Objects: adding '".\stm3210e-eval\startup_stm32f10x_md_vl.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\stm3210e-eval\common.o" ".\stm3210e-eval\download.o" ".\stm3210e-eval\main.o" ".\stm3210e-eval\stm32f10x_it.o" ".\stm3210e-eval\ymodem.o" ".\stm3210e-eval\upload.o" ".\stm3210e-eval\stm32f10x_dma.o" ".\stm3210e-eval\stm32f10x_exti.o" ".\stm3210e-eval\stm32f10x_flash.o" ".\stm3210e-eval\stm32f10x_gpio.o" ".\stm3210e-eval\stm32f10x_i2c.o" ".\stm3210e-eval\stm32f10x_rcc.o" ".\stm3210e-eval\stm32f10x_sdio.o" ".\stm3210e-eval\stm32f10x_spi.o" ".\stm3210e-eval\stm32f10x_usart.o" ".\stm3210e-eval\misc.o" ".\stm3210e-eval\core_cm3.o" ".\stm3210e-eval\system_stm32f10x.o" ".\stm3210e-eval\startup_stm32f10x_md_vl.o" 
+--library_type=microlib --strict --scatter ".\STM3210E-EVAL\STM3210E-EVAL.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\STM3210E-EVAL\STM3210E-EVAL.map" -o .\STM3210E-EVAL\STM3210E-EVAL.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\STM3210E-EVAL\STM3210E-EVAL.axf'
+### ADS-LD Command File: '.\STM3210E-EVAL\STM3210E-EVAL.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\STM3210E-EVAL\STM3210E-EVAL.lnp', Handle=0x00000D30
+### Writing '.lnp' file
+### ADS-LD Command file '.\STM3210E-EVAL\STM3210E-EVAL.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

@@ -1,0 +1,53 @@
+*** Creating Trace Output File '..\OBJ\Template.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"..\obj\main.o"'
+### List of Objects: adding '"..\obj\stm32f10x_it.o"'
+### List of Objects: adding '"..\obj\system_stm32f10x.o"'
+### List of Objects: adding '"..\obj\app.o"'
+### List of Objects: adding '"..\obj\flash.o"'
+### List of Objects: adding '"..\obj\core_cm3.o"'
+### List of Objects: adding '"..\obj\startup_stm32f10x_hd.o"'
+### List of Objects: adding '"..\obj\stm32f10x_dbgmcu.o"'
+### List of Objects: adding '"..\obj\stm32f10x_gpio.o"'
+### List of Objects: adding '"..\obj\stm32f10x_rcc.o"'
+### List of Objects: adding '"..\obj\stm32f10x_tim.o"'
+### List of Objects: adding '"..\obj\stm32f10x_usart.o"'
+### List of Objects: adding '"..\obj\misc.o"'
+### List of Objects: adding '"..\obj\stm32f10x_flash.o"'
+### List of Objects: adding '"..\obj\stm32f10x_iwdg.o"'
+### List of Objects: adding '"..\obj\sys.o"'
+### List of Objects: adding '"..\obj\delay.o"'
+### List of Objects: adding '"..\obj\mb.o"'
+### List of Objects: adding '"..\obj\mbascii.o"'
+### List of Objects: adding '"..\obj\mbfunccoils.o"'
+### List of Objects: adding '"..\obj\mbfuncdiag.o"'
+### List of Objects: adding '"..\obj\mbfuncdisc.o"'
+### List of Objects: adding '"..\obj\mbfuncholding.o"'
+### List of Objects: adding '"..\obj\mbfuncinput.o"'
+### List of Objects: adding '"..\obj\mbfuncother.o"'
+### List of Objects: adding '"..\obj\mbutils.o"'
+### List of Objects: adding '"..\obj\mbcrc.o"'
+### List of Objects: adding '"..\obj\mbrtu.o"'
+### List of Objects: adding '"..\obj\mbtcp.o"'
+### List of Objects: adding '"..\obj\portevent.o"'
+### List of Objects: adding '"..\obj\portserial.o"'
+### List of Objects: adding '"..\obj\porttimer.o"'
+### List of Objects: adding '"..\obj\embreg.o"'
+### List of Objects: adding '"..\obj\readme.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "..\obj\main.o" "..\obj\stm32f10x_it.o" "..\obj\system_stm32f10x.o" "..\obj\app.o" "..\obj\flash.o" "..\obj\core_cm3.o" "..\obj\startup_stm32f10x_hd.o" "..\obj\stm32f10x_dbgmcu.o" "..\obj\stm32f10x_gpio.o" "..\obj\stm32f10x_rcc.o" "..\obj\stm32f10x_tim.o" "..\obj\stm32f10x_usart.o" "..\obj\misc.o" "..\obj\stm32f10x_flash.o" "..\obj\stm32f10x_iwdg.o" "..\obj\sys.o" "..\obj\delay.o" "..\obj\mb.o" "..\obj\mbascii.o" "..\obj\mbfunccoils.o" "..\obj\mbfuncdiag.o" "..\obj\mbfuncdisc.o" "..\obj\mbfuncholding.o" "..\obj\mbfuncinput.o" "..\obj\mbfuncother.o" "..\obj\mbutils.o" "..\obj\mbcrc.o" "..\obj\mbrtu.o" "..\obj\mbtcp.o" "..\obj\portevent.o" "..\obj\portserial.o" "..\obj\porttimer.o" "..\obj\embreg.o" "..\obj\readme.o" 
+--strict --scatter "..\OBJ\Template.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Template.map" -o ..\OBJ\Template.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '..\OBJ\Template.axf'
+### ADS-LD Command File: '..\OBJ\Template.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '..\OBJ\Template.lnp', Handle=0x00000EB0
+### Writing '.lnp' file
+### ADS-LD Command file '..\OBJ\Template.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

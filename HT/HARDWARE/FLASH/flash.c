@@ -44,7 +44,7 @@ RegStoreType regs_sturct[REG_TYPE_NUM]=
 	{&comm_settings,COMSREG_NREGS},	
 	{&measure_settings,MSREG_NREGS},
 	{&calib_settings,CALSREG_NREGS},
-	{&filter_settings,FSREG_NREGS},
+	{&user_info,UIREG_NREGS},
 	//{&measure_values,MVREG_NREGS},
 	{&sensor_param,PHREG_NREGS}  
 };
@@ -181,7 +181,7 @@ void RestoreModbusReg(void)
 	
 	calib_settings= *((__IO CALIB_SETTINGS_T *)CAL_SET_SADDR);
 	
-	filter_settings= *((__IO FILTER_SETTINGS_T *)FILTER_SET_SADDR);
+	user_info= *((__IO USER_INFO_T *)FILTER_SET_SADDR);
 	
 	sensor_param= *((__IO SENSOR_PARAM_T *)CONDUCT_PARA_SADDR);
 	

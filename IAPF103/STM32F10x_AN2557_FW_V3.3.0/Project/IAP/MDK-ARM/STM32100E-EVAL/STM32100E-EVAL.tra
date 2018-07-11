@@ -30,7 +30,7 @@
 ### ADS-LD Output File: '.\STM32100E-EVAL\STM32100E-EVAL.axf'
 ### ADS-LD Command File: '.\STM32100E-EVAL\STM32100E-EVAL.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\STM32100E-EVAL\STM32100E-EVAL.lnp', Handle=0x00000848
+### Creating CmdFile '.\STM32100E-EVAL\STM32100E-EVAL.lnp', Handle=0x00000950
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\STM32100E-EVAL\STM32100E-EVAL.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

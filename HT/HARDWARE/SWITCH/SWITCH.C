@@ -1,35 +1,33 @@
-#include "SWITCH.h"
+#include "switch.h"
+#include "spi.h"
 
+void turnOffLeds(void);
 void switch_GPIOInit(void)
 {
 	GPIO_InitTypeDef g;
 	g.GPIO_Mode=GPIO_Mode_Out_PP;
 	g.GPIO_Speed=GPIO_Speed_50MHz;
 	
-	g.GPIO_Pin=GPIO_Pin_8;   //SW1
-	GPIO_Init(GPIOA,&g);
+	g.GPIO_Pin=LED_SW1_PIN | LED_SW2_PIN;   
+	GPIO_Init(LED_SW1_PORT,&g);
 	
-	g.GPIO_Pin=GPIO_Pin_9;   //EN
-	GPIO_Init(GPIOA,&g);
-	
-	g.GPIO_Pin=GPIO_Pin_15;   //SW2
-	GPIO_Init(GPIOB,&g);
+	turnOffLeds();
 }
 
-void turnLed1(void)
+void turnOnLed1(void)
 {
-	 EN_H;
-	 LED_SW1_H;
-	 LED_SW2_L;
+	 LED_SW1_L;
+	 LED_SW2_H;
 }
-void turnLed2(void)
+void turnOnLed2(void)
 {
-	 EN_H;
 	 LED_SW1_H;
 	 LED_SW2_H;
 }
 
 void turnOffLeds(void)
 {
-	EN_L;
+	 LED_SW1_L;
+	 LED_SW2_L;
+	 write_to_LTC2630ISC6(0X30,0);
 }

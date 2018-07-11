@@ -1,6 +1,8 @@
 #include "app.h"
-#include "LTC2630ISC6.h"
-#include "color.h"
+#include "spi.h"
+#include "sensor.h"
+#include "ad5410.h"
+#include "tmp122.h"
 
 void Configure_IWDG(void)
 {
@@ -17,7 +19,7 @@ void Configure_IWDG(void)
 	IWDG_Enable();	
 }
 
-u32 i=0;
+u16 test=0;
 int main()
 {
 	#define VECT_TAB_OFFSET  0x3000
@@ -30,42 +32,34 @@ int main()
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO|RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, ENABLE);
   
- 	delay_init();
+ 	delay_Init();
+ 	LTC2630ISC6_Init();
+ 	switch_GPIOInit();
+	ADS1120_Init();
+	AD5410_Init();
+	TIM2_MeasureInit();
+	TIM1_ModpollInit();
+	TMP122_Init();
 	
-	Configure_IWDG();  //配置看门狗
+// 	Configure_IWDG();  //配置看门狗
 	
  	RestoreModbusReg(); 
 		
  	eMBInit(MB_RTU, comm_settings.modbusAddr, 0x02, comm_settings.modbusBaud, comm_settings.modbusParity);
-  eMBEnable();  
-	LTC2630ISC6_Init();
-	switch_GPIOInit();
-	//Adc_Init();
-	TIM2_MeasureInit();
-	TIM1_ModpollInit();
+  eMBEnable(); 
 	
   while(1)
  { 	
-		//eMBPoll(); 
 	  FunctionPoll(); 
-	  
+	 
+    AD5410_IOUT(measure_values.sensorValue_mA);	 
+	 
 	  if(isMeasureFlg==1)
 		{
-			if(calib_settings.type==1)
-			{
-				isMeasureFlg=0;
-				measureClF();
-			}
-			else if(calib_settings.type==0)
-			{
-				isMeasureFlg=0;
-				measureUrea();
-			}
-			else
-			{
-				isMeasureFlg=0;
-				measureUrea();			
-			}
+// 			measure();
+			__disable_irq() ;
+			measure_values.temperatureValue=TMP122_CalTemp();
+			__enable_irq() ;
 		}	
 	}
 }

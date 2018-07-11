@@ -59,11 +59,11 @@ extern  u8 ModbusStore;
 #define CALSREG_NREGS	(sizeof(CALIB_SETTINGS_T)>>1)
 
 //滤波器设置寄存器地址标志
-#define FSREG_FLAG		45	
+#define UIREG_FLAG		45	
 //滤波器设置寄存器地址标志
-#define FSREG_SADDR		(FSREG_FLAG * 1000 + 1)		
+#define UIREG_SADDR		(UIREG_FLAG * 1000 + 1)		
 //滤波器设置寄存器个数
-#define FSREG_NREGS		(sizeof(FILTER_SETTINGS_T)>>1)
+#define UIREG_NREGS		(sizeof(USER_INFO_T)>>1)
 	
 //测量值寄存器地址标志
 #define MVREG_FLAG		46	

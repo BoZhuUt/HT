@@ -43,7 +43,7 @@ extern MEASURE_SETTINGS_T measure_settings;
 
 extern CALIB_SETTINGS_T calib_settings;
 
-extern FILTER_SETTINGS_T filter_settings;
+extern USER_INFO_T user_info;
 
 extern MEASURE_VALUES_T measure_values;
 

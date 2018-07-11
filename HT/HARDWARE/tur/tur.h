@@ -4,7 +4,7 @@
 
 #include "app.h"
 #include "embreg.h"
-#include "LTC2630ISC6.h"
+#include "spi.h"
 #include "SWITCH.H"
 #include "ADC.H"
 

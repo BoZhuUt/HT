@@ -6,6 +6,8 @@
 ### List of Objects: adding '"..\obj\system_stm32f10x.o"'
 ### List of Objects: adding '"..\obj\app.o"'
 ### List of Objects: adding '"..\obj\flash.o"'
+### List of Objects: adding '"..\obj\sensor.o"'
+### List of Objects: adding '"..\obj\tmp122.o"'
 ### List of Objects: adding '"..\obj\core_cm3.o"'
 ### List of Objects: adding '"..\obj\startup_stm32f10x_hd.o"'
 ### List of Objects: adding '"..\obj\stm32f10x_dbgmcu.o"'
@@ -16,7 +18,8 @@
 ### List of Objects: adding '"..\obj\misc.o"'
 ### List of Objects: adding '"..\obj\stm32f10x_flash.o"'
 ### List of Objects: adding '"..\obj\stm32f10x_iwdg.o"'
-### List of Objects: adding '"..\obj\sys.o"'
+### List of Objects: adding '"..\obj\stm32f10x_adc.o"'
+### List of Objects: adding '"..\obj\stm32f10x_dma.o"'
 ### List of Objects: adding '"..\obj\delay.o"'
 ### List of Objects: adding '"..\obj\mb.o"'
 ### List of Objects: adding '"..\obj\mbascii.o"'
@@ -34,9 +37,13 @@
 ### List of Objects: adding '"..\obj\portserial.o"'
 ### List of Objects: adding '"..\obj\porttimer.o"'
 ### List of Objects: adding '"..\obj\embreg.o"'
-### List of Objects: adding '"..\obj\readme.o"'
+### List of Objects: adding '"..\obj\ltc2630isc6.o"'
+### List of Objects: adding '"..\obj\switch.o"'
+### List of Objects: adding '"..\obj\adc.o"'
+### List of Objects: adding '"..\obj\ads1120.o"'
+### List of Objects: adding '"..\obj\ad5410.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 "..\obj\main.o" "..\obj\stm32f10x_it.o" "..\obj\system_stm32f10x.o" "..\obj\app.o" "..\obj\flash.o" "..\obj\core_cm3.o" "..\obj\startup_stm32f10x_hd.o" "..\obj\stm32f10x_dbgmcu.o" "..\obj\stm32f10x_gpio.o" "..\obj\stm32f10x_rcc.o" "..\obj\stm32f10x_tim.o" "..\obj\stm32f10x_usart.o" "..\obj\misc.o" "..\obj\stm32f10x_flash.o" "..\obj\stm32f10x_iwdg.o" "..\obj\sys.o" "..\obj\delay.o" "..\obj\mb.o" "..\obj\mbascii.o" "..\obj\mbfunccoils.o" "..\obj\mbfuncdiag.o" "..\obj\mbfuncdisc.o" "..\obj\mbfuncholding.o" "..\obj\mbfuncinput.o" "..\obj\mbfuncother.o" "..\obj\mbutils.o" "..\obj\mbcrc.o" "..\obj\mbrtu.o" "..\obj\mbtcp.o" "..\obj\portevent.o" "..\obj\portserial.o" "..\obj\porttimer.o" "..\obj\embreg.o" "..\obj\readme.o" 
+--cpu Cortex-M3 "..\obj\main.o" "..\obj\stm32f10x_it.o" "..\obj\system_stm32f10x.o" "..\obj\app.o" "..\obj\flash.o" "..\obj\sensor.o" "..\obj\tmp122.o" "..\obj\core_cm3.o" "..\obj\startup_stm32f10x_hd.o" "..\obj\stm32f10x_dbgmcu.o" "..\obj\stm32f10x_gpio.o" "..\obj\stm32f10x_rcc.o" "..\obj\stm32f10x_tim.o" "..\obj\stm32f10x_usart.o" "..\obj\misc.o" "..\obj\stm32f10x_flash.o" "..\obj\stm32f10x_iwdg.o" "..\obj\stm32f10x_adc.o" "..\obj\stm32f10x_dma.o" "..\obj\delay.o" "..\obj\mb.o" "..\obj\mbascii.o" "..\obj\mbfunccoils.o" "..\obj\mbfuncdiag.o" "..\obj\mbfuncdisc.o" "..\obj\mbfuncholding.o" "..\obj\mbfuncinput.o" "..\obj\mbfuncother.o" "..\obj\mbutils.o" "..\obj\mbcrc.o" "..\obj\mbrtu.o" "..\obj\mbtcp.o" "..\obj\portevent.o" "..\obj\portserial.o" "..\obj\porttimer.o" "..\obj\embreg.o" "..\obj\ltc2630isc6.o" "..\obj\switch.o" "..\obj\adc.o" "..\obj\ads1120.o" "..\obj\ad5410.o" 
 --strict --scatter "..\OBJ\Template.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -44,7 +51,7 @@
 ### ADS-LD Output File: '..\OBJ\Template.axf'
 ### ADS-LD Command File: '..\OBJ\Template.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '..\OBJ\Template.lnp', Handle=0x00000EB0
+### Creating CmdFile '..\OBJ\Template.lnp', Handle=0x000007EC
 ### Writing '.lnp' file
 ### ADS-LD Command file '..\OBJ\Template.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

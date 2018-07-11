@@ -187,11 +187,11 @@ eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usN
 			break;
 			
 		//滤波器参数设置寄存器     //45001
-		case FSREG_FLAG:
+		case UIREG_FLAG:
 			//判断地址和寄存器数目合法性
-			if(usAddress + usNRegs <= FSREG_SADDR + FSREG_NREGS)
+			if(usAddress + usNRegs <= UIREG_SADDR + UIREG_NREGS)
 			{
-				data_pointer= (void *)&filter_settings;
+				data_pointer= (void *)&user_info;
 			}
 			else
 			{

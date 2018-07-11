@@ -16,7 +16,7 @@ MEASURE_SETTINGS_T measure_settings;
 
 CALIB_SETTINGS_T calib_settings;
 
-FILTER_SETTINGS_T filter_settings;
+USER_INFO_T user_info;
 
 MEASURE_VALUES_T measure_values;
 
@@ -30,7 +30,7 @@ SENSOR_PARAM_T sensor_param;
 void SENSOR_MeasureParameterReset(void)
 {
 	memset(system_status.deviceName,0,sizeof(system_status.deviceName));
-	memset(system_status.serial,0,sizeof(system_status.serial));
+	memset(system_status.serialNum,0,sizeof(system_status.serialNum));
 	memset(system_status.hardwareVer,0,sizeof(system_status.hardwareVer));
 	memset(system_status.softwareVer,0,sizeof(system_status.softwareVer));
 	
@@ -40,8 +40,8 @@ void SENSOR_MeasureParameterReset(void)
 	system_status.calibStatus=0;     //0  标定空闲
 	system_status.configStatus=1;    //0  未配置    1 已配置
 	system_status.productNum=65535;
-	strcpy(system_status.deviceName,"TURBIDITY");
-	strcpy(system_status.serial,"10");
+	strcpy(system_status.deviceName,"HT");
+	strcpy(system_status.serialNum,"10");
 	strcpy(system_status.hardwareVer,HW_VERSION);
 	strcpy(system_status.softwareVer,SW_VERSION);
 	memset(system_status.reserved,0,sizeof(system_status.reserved));
@@ -52,20 +52,18 @@ void SENSOR_MeasureParameterReset(void)
 	comm_settings.modbusParity=MODBUS_PARITY_EVEN;
 	comm_settings.modbusBaud=9600;
 	memset(comm_settings.reserved,0,sizeof(comm_settings.reserved));
-
-	memset(filter_settings.reserved,0,sizeof(filter_settings.reserved));
 	
-	calib_settings.calibCommand=CMD_NONE;   // 功能轮询寄存器值 1校准  2测量范围(4-20代表值)  3恢复出厂设置  7进入BootLoader 
-	calib_settings.solutionL=3.0;//第一校准值
-	calib_settings.solutionH=7.0;
+	calib_settings.calibCommand=CMD_NONE;    
 	memset(calib_settings.reserved,0,sizeof(calib_settings.reserved));
 	
 	measure_settings.smoothingFactor=0.3;   //fitPar
 	measure_settings.sampleCycle=4;  //uint16
 	memset(measure_settings.reserved,0,sizeof(measure_settings.reserved));
 	
-	memset(filter_settings.reserved,0,sizeof(filter_settings.reserved));
+	memset(user_info.reserved,0,sizeof(user_info.reserved));
 	memset(sensor_param.reserved,0,sizeof(sensor_param.reserved));
+	
+	measure_values.sensorValue_mA=4.0;
 	
 	StoreModbusReg();
 }

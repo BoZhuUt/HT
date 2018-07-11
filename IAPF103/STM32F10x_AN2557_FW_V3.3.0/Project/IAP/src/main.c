@@ -55,15 +55,15 @@ void USART2_IRQHandler(void)
   */
 int main(void)
 {
-
+  //SystemInit();
 	char isGotoBootloader=0;
-	char i=5; 
+	char i=3; 
 	/* Flash unlock */
   FLASH_Unlock();
 	IAP_Init();//初始化串口，串口等待更新指令
-	Serial_PutString("Conductivity Probe Startup\r\n\n");
+	Serial_PutString("Sensor Startup\r\n\n");
 //	Delay_ms(1000);
-	Serial_PutString("Boot to App in 5 sec later\r\n\n");
+	Serial_PutString("Boot to App in 3 sec later\r\n\n");
 //	Delay_ms(1000);
 	Serial_PutString("Press abc to interrupt ......\r\n\n");
 	
@@ -92,6 +92,7 @@ int main(void)
   /* Keep the user application running */
   else
   {
+		Serial_PutString("Jump To APP \r\n\n");
     /* Test if user code is programmed starting from address "ApplicationAddress" */
     if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FFE0000 ) == 0x20000000)
     { 

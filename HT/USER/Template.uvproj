@@ -350,7 +350,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_MD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\usart;..\HARDWARE\UART2;..\FreeModbus\modbus\ascii;..\FreeModbus\modbus\functions;..\FreeModbus\modbus\include;..\FreeModbus\modbus\rtu;..\FreeModbus\modbus\tcp;..\FreeModbus\port;..\HARDWARE\LED;..\HARDWARE\APP;..\HARDWARE\FLASH;..\HARDWARE\AD5410\inc;..\HARDWARE\LTC2440\inc;..\HARDWARE\temperature\inc;..\SYSTEM\delay;..\HARDWARE\G;..\HARDWARE\LTC2630ISC6;..\HARDWARE\SWITCH;..\HARDWARE\ADC;..\HARDWARE\tur;..\HARDWARE\COLOR</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\usart;..\HARDWARE\UART2;..\FreeModbus\modbus\ascii;..\FreeModbus\modbus\functions;..\FreeModbus\modbus\include;..\FreeModbus\modbus\rtu;..\FreeModbus\modbus\tcp;..\FreeModbus\port;..\HARDWARE\LED;..\HARDWARE\APP;..\HARDWARE\FLASH;..\HARDWARE\AD5410\inc;..\HARDWARE\LTC2440\inc;..\HARDWARE\temperature\inc;..\SYSTEM\delay;..\HARDWARE\G;..\HARDWARE\LTC2630ISC6;..\HARDWARE\SWITCH;..\HARDWARE\ADC;..\HARDWARE\SENSOR;..\HARDWARE\TMP122AIDBVR</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -417,9 +417,14 @@
               <FilePath>..\HARDWARE\FLASH\flash.c</FilePath>
             </File>
             <File>
-              <FileName>tur.c</FileName>
+              <FileName>sensor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\tur\tur.c</FilePath>
+              <FilePath>..\HARDWARE\SENSOR\sensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmp122.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TMP122AIDBVR\tmp122.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -615,9 +620,14 @@
               <FilePath>..\HARDWARE\ADC\ADC.C</FilePath>
             </File>
             <File>
-              <FileName>color.c</FileName>
+              <FileName>ads1120.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\COLOR\color.c</FilePath>
+              <FilePath>..\HARDWARE\ADS1120\ads1120.c</FilePath>
+            </File>
+            <File>
+              <FileName>ad5410.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\AD5410\src\ad5410.c</FilePath>
             </File>
           </Files>
         </Group>

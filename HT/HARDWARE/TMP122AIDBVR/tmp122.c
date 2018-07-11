@@ -15,6 +15,8 @@
 #include "tmp122.h"
 #include "delay.h"
 
+u8 isNegative=0;
+
 void TMP122_GPIOInit(void)
 {
 	GPIO_InitTypeDef g;
@@ -42,7 +44,7 @@ void TMP122_Init(void)
 	TMP122_SCK_1;
 }
 
-u16 TMP122_Output()
+u16 TMP122_Output(void)
 {
 	u16 outdata=0;
 	u8 n=0;
@@ -64,27 +66,40 @@ u16 TMP122_Output()
 	TMP122_CS_1;
 	TMP122_SCK_1;
 	if(outdata<0x8000)
+	{
+		isNegative=0;
 		return (outdata>>3);
+	}
 	else
 	{
+		isNegative=1;
 	  /* 负数求补码，按位取反再加1 */
 		outdata=0xFFFF-outdata;
 		outdata>>=3;
 		outdata+=1;
-		return (0-outdata);
+  		//return (0-outdata);
+		return outdata;
 	}
 }
 float TMP122_CalTemp(void)
 {
 	u16 tempint=0;
-	u16 tempdec=0;
+	u8 tempdec1=0;
+	u8 tempdec2=0;
+	u8 tempdec3=0;
+	u8 tempdec4=0;
+	float tempdec=0;
 	float tempfloat=0.0;
 	u16 outData;
 	
 	outData=TMP122_Output();
 	tempint=outData>>4;
-	tempdec=(outData&0x08)/2+(outData&0x04)/4+(outData&0x02)/8+(outData&0x01)/16;
+	tempdec=(outData&0x000f)*0.0625;
 	tempfloat=tempint+tempdec;
+	if(isNegative==1)
+	{
+		tempfloat=tempfloat*(-1);
+	}
 	
 	return tempfloat;
 }

@@ -4,6 +4,7 @@
 #include "ad5410.h"
 #include "tmp122.h"
 
+
 void Configure_IWDG(void)
 {
   RCC->CSR |= RCC_CSR_LSION; 
@@ -61,6 +62,7 @@ int main()
 			measure_values.temperatureValue=TMP122_CalTemp();
 			__enable_irq() ;
 		}	
+	measure();
 	}
 }
 

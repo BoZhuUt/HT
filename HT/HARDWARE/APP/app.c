@@ -33,6 +33,7 @@ void SENSOR_MeasureParameterReset(void)
 	memset(system_status.serialNum,0,sizeof(system_status.serialNum));
 	memset(system_status.hardwareVer,0,sizeof(system_status.hardwareVer));
 	memset(system_status.softwareVer,0,sizeof(system_status.softwareVer));
+	memset(user_info.emailAddr,0,sizeof(user_info.emailAddr));
 	
 	//系统状态寄存器复位
 	system_status.runStatus=0;
@@ -53,17 +54,32 @@ void SENSOR_MeasureParameterReset(void)
 	comm_settings.modbusBaud=9600;
 	memset(comm_settings.reserved,0,sizeof(comm_settings.reserved));
 	
-	calib_settings.calibCommand=CMD_NONE;    
+	calib_settings.calibCommand=CMD_NONE; 
+  calib_settings.calibSolution=100.0;
 	memset(calib_settings.reserved,0,sizeof(calib_settings.reserved));
 	
 	measure_settings.smoothingFactor=0.3;   //fitPar
 	measure_settings.sampleCycle=4;  //uint16
+	measure_settings.measureRange=300.0;
 	memset(measure_settings.reserved,0,sizeof(measure_settings.reserved));
 	
+	strcpy(user_info.emailAddr,"info@pyxis-lab.com.cn");
 	memset(user_info.reserved,0,sizeof(user_info.reserved));
+	
 	memset(sensor_param.reserved,0,sizeof(sensor_param.reserved));
 	
 	measure_values.sensorValue_mA=4.0;
+	
+	sensor_param.slope=10.0;
+	sensor_param.intercept=0.1;
+	sensor_param.t1=0.06;
+	sensor_param.t2=0.0;
+	sensor_param.ct365=200;
+	sensor_param.cs365=2000;
+	sensor_param.ct420=1000;
+	sensor_param.cs420=200;
+	
+	sensor_param.errorCode=0;
 	
 	StoreModbusReg();
 }
@@ -100,6 +116,36 @@ void FunctionPoll(void)
 			StoreModbusReg(); 
 			break;
 		}	
+		case CMD_DI_CALIB:
+		{
+			calib_settings.calibCommand=CMD_NONE;
+			sensor_param.errorCode=0;
+			
+			break;
+		}
+		case CMD_SLOPE_CALIB:
+		{
+			calib_settings.calibCommand=CMD_NONE;
+			//使用calib_settings.calibSolution，float，44002-44003作为标液寄存器
+			break;
+		}
+		case CMD_SAVE_FACTORY_PARAM:
+		{
+			calib_settings.calibCommand=CMD_NONE;
+			
+			sensor_param.slopeFactory=sensor_param.slope;
+			sensor_param.ct365Factory=sensor_param.ct365;
+			sensor_param.cs365Factory=sensor_param.cs365;
+			sensor_param.ct420Factory=sensor_param.ct420;
+			sensor_param.cs420Factory=sensor_param.cs420;
+			sensor_param.t365diFactory=sensor_param.t365di;
+			sensor_param.s365diFactory=sensor_param.s365di;
+			sensor_param.t420diFactory=sensor_param.t420di;
+			sensor_param.s420diFactory=sensor_param.s420di;
+			sensor_param.saveFactoryParam=0x5555;
+			
+			break;
+		}
 		case CMD_JUMP_BOOTLOADER:
 		{
 			calib_settings.calibCommand=CMD_NONE;

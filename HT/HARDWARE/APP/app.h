@@ -11,17 +11,18 @@
 #include "flash.h"
 
 #define HW_VERSION  "1.0"
-#define SW_VERSION  "1.1.1"
+#define SW_VERSION  "1.1.2"
 
 #define MODBUS_PARITY_NONE 	0
 #define MODBUS_PARITY_ODD 	1
 #define MODBUS_PARITY_EVEN 	2
 
 /*-------------------功能轮询命令宏-------------------*/
-#define CMD_JUMP_BOOTLOADER  7  //进入BootLoader
+#define CMD_SAVE_FACTORY_PARAM  6  //备份出厂参数
+#define CMD_DI_CALIB	4		  //DI校准
+#define CMD_SLOPE_CALIB	5		//斜率校准
 #define CMD_PARA_RESET	3		//参数复位
-#define CMD_CALIB_STEP2	2		//4-20MA设置
-#define CMD_CALIB_STEP1	1		//校准
+#define CMD_JUMP_BOOTLOADER  2  //进入BootLoader
 #define CMD_NONE      0    //NONE
 
 #define GROUND_ERR	0x01

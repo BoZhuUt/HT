@@ -192,6 +192,7 @@ void RestoreModbusReg(void)
 	
 	system_status.calibStatus=0;
 	calib_settings.calibCommand=0;
+	sensor_param.errorCode=0;
 
 	memset(system_status.hardwareVer,0,sizeof(system_status.hardwareVer));
 	memset(system_status.softwareVer,0,sizeof(system_status.softwareVer));

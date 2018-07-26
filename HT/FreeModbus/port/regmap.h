@@ -41,10 +41,11 @@ typedef	struct sysStatus
 	char		  hardwareVer[16];    /* 41023   128bit char    r/w */
 	char		  softwareVer[16];    /* 41031   128bit char    r/w */
 	uint32		serialNum_u32;			/* 41039   32bit  */
-	uint16		btleConfigStatus;		/* 41041   16bit integer */
-	uint16    btleAdverCmd;       /* 41042   16bit integer */
-	uint16    btleAdverStatus;    /* 41043   16bit integer */
-	uint16		reserved[7];				/* 41044-41050   reserved */
+	uint16		t365gain;		        /* 41041   16bit integer */
+	uint16    s365gain;           /* 41042   16bit integer */
+	uint16    t420gain;           /* 41043   16bit integer */
+	uint16		s420gain;				    /* 41044   reserved */
+	uint16    reserved[6];        /* 41045-41050   reserved */
 } SYS_STATUS_T;
 
 typedef struct commSettings

@@ -11,7 +11,7 @@
 #include "flash.h"
 
 #define HW_VERSION  "1.0"
-#define SW_VERSION  "1.1.2"
+#define SW_VERSION  "1.2"
 
 #define MODBUS_PARITY_NONE 	0
 #define MODBUS_PARITY_ODD 	1

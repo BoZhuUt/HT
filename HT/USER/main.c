@@ -51,18 +51,17 @@ int main()
 	
   while(1)
  { 	
-	  FunctionPoll(); 
-	 
+		FunctionPoll(); 
     AD5410_IOUT(measure_values.sensorValue_mA);	 
-	 
 	  if(isMeasureFlg==1)
 		{
-// 			measure();
+			isMeasureFlg=0;
 			__disable_irq() ;
-			measure_values.temperatureValue=TMP122_CalTemp();
+			//measure_values.sensorValue=TMP122_CalTemp();
 			__enable_irq() ;
-		}	
-	measure();
+			measure();
+			AD5410_IOUT(measure_values.sensorValue_mA);
+		}
 	}
 }
 

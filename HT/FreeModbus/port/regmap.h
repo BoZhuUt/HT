@@ -127,7 +127,11 @@ typedef	struct sensorParam
 	uint16  	errorCode;					/* 48031   16bit integer   useless r/w */
 	float			slopeFactory;				/* 48032   float */
 	uint16    saveFactoryParam;   /* 48034 */
-	uint16		reserved[16];				/* 48035-48050   reserved */	
+	float     fluoresceinLowSlope;           /*48035   32bit integer   r/w */
+	float			fluoresceinHighSlope;          /*48037   32bit integer   r/w */
+	float			fluoresceinLowintercept;       /*48039   32bit integer   r/w */
+	float			fluoresceinHighintercept;      /*48041  32bit integer   r/w */
+	uint16		reserved[8];				/* 48042-48050   reserved */	
 } SENSOR_PARAM_T;
 
 typedef struct regmap

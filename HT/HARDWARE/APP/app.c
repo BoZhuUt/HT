@@ -63,7 +63,7 @@ void SENSOR_MeasureParameterReset(void)
 	memset(calib_settings.reserved,0,sizeof(calib_settings.reserved));
 	
 	measure_settings.smoothingFactor=0.3;   //fitPar
-	measure_settings.sampleCycle=4;  //uint16
+	measure_settings.sampleCycle=10;  //uint16
 	measure_settings.measureRange=300.0;
 	memset(measure_settings.reserved,0,sizeof(measure_settings.reserved));
 	
@@ -76,6 +76,7 @@ void SENSOR_MeasureParameterReset(void)
 	
 	sensor_param.slope=10.0;
 	sensor_param.intercept=0.1;
+	sensor_param.mARange=20;
 	sensor_param.t1=0.06;
 	sensor_param.t2=0.0;
 	sensor_param.ct365=200;
@@ -124,13 +125,16 @@ void FunctionPoll(void)
 		{
 			calib_settings.calibCommand=CMD_NONE;
 			sensor_param.errorCode=0;
-			
+			measure();
+			sensor_param.s365di=sensor_param.s365;
+			sensor_param.s420di=sensor_param.s420;
 			break;
 		}
 		case CMD_SLOPE_CALIB:
 		{
 			calib_settings.calibCommand=CMD_NONE;
 			//使用calib_settings.calibSolution，float，44002-44003作为标液寄存器
+			slopeCalib(calib_settings.calibSolution);
 			break;
 		}
 		case CMD_SAVE_FACTORY_PARAM:
@@ -203,6 +207,7 @@ void TIM2_IRQHandler(void)
 			isMeasureFlg=1;
 			measureCount=0;
 		} 
+		//FunctionPoll(); 
 		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 	}	
 }

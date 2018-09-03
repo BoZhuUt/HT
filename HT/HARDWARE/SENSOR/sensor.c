@@ -6,7 +6,7 @@ u16 dark[4]={1};
  void measure(void)
 {
 	u8 j=0;
-	
+	float fluorescein;
 	turnOffLeds();
 	delay_ms(TIME_DELAY);
 	for(j=0;j<4;j++)
@@ -14,24 +14,11 @@ u16 dark[4]={1};
 		ADS1120_ReadChannel(j,20);
 		dark[j]=adcResults[j];
 	}
-	/*********************** 365 ***********************/
 	turnOnLed2();
-//	write_to_LTC2630ISC6(0X30,sensor_param.ct365);
-//	delay_ms(TIME_DELAY);
-//	ADS1120_ReadChannel(T365,20);
-//	if(adcResults[T365]>dark[T365])
-//	{
-//		sensor_param.t365=adcResults[T365]-dark[T365];
-//	}
-//	else
-//	{
-//		sensor_param.errorCode|=ERR_SINGNAL_TOO_LOW;
-//	}
 	sensor_param.darks365=dark[S365];
-	
 	write_to_LTC2630ISC6(0X30,sensor_param.cs365);
 	delay_ms(TIME_DELAY);
-	ADS1120_ReadChannel(S365,20);
+	ADS1120_ReadChannel(S365,50);
 	if(adcResults[S365]>dark[S365])
 	{
 		sensor_param.s365=adcResults[S365]-dark[S365];
@@ -40,31 +27,31 @@ u16 dark[4]={1};
 	{
 		sensor_param.errorCode|=ERR_SINGNAL_TOO_LOW;
 	}
-	/************************ 420 ***********************/
-//	turnOnLed2();
-//	write_to_LTC2630ISC6(0X30,sensor_param.ct420);
-//	delay_ms(TIME_DELAY);
-//	ADS1120_ReadChannel(T420,20);
-//	if(adcResults[T420]>dark[T420])
-//	{
-//		sensor_param.t420=adcResults[T420]-dark[T420];
-//	}
-//	else
-//	{
-//		sensor_param.errorCode|=ERR_SINGNAL_TOO_LOW;
-//	}
-//	
 //	write_to_LTC2630ISC6(0X30,sensor_param.cs420);
-//	delay_ms(TIME_DELAY);
-//	ADS1120_ReadChannel(S420,20);
-//	if(adcResults[S420]>dark[S420])
-//	{
-//		sensor_param.s420=adcResults[S420]-dark[S420];
-//	}
-//	else
-//	{
-//		sensor_param.errorCode|=ERR_SINGNAL_TOO_LOW;
-//	}	
+//	delay_ms(10);
+	ADS1120_ReadChannel(S420,50);
+	if(adcResults[S420]>dark[S420])
+	{
+		sensor_param.s420=adcResults[S420]-dark[S420];
+	}
+	else
+	{
+		sensor_param.errorCode|=ERR_SINGNAL_TOO_LOW;
+	}	
 	turnOffLeds();
-	
+	fluorescein=sensor_param.slope*((float)sensor_param.s365/(float)sensor_param.s365di-1.0)/((float)sensor_param.s420/(float)sensor_param.s420di);
+	if(fluorescein<0) fluorescein=0;
+	measure_values.sensorValue=measure_settings.smoothingFactor*fluorescein+(1-measure_settings.smoothingFactor)*measure_values.sensorValue;
+	measure_values.sensorValue_mA=fluorescein/sensor_param.mARange*16+4;
+}
+
+u8 slopeCalib(float solution)
+{
+	float S365,T420,slope,intercept;
+	//measure();
+	S365=(float)sensor_param.s365/(float)sensor_param.s365di;
+	T420=(float)sensor_param.s420/(float)sensor_param.s420di;
+	slope=solution /(S365-1.0)*T420;
+	sensor_param.slope=slope;
+	return 0;
 }

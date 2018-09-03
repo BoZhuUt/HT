@@ -9,9 +9,10 @@
 #include "mb.h"
 #include "regmap.h"
 #include "flash.h"
+#include "sensor.h"
 
 #define HW_VERSION  "1.0"
-#define SW_VERSION  "1.2"
+#define SW_VERSION  "1.3"
 
 #define MODBUS_PARITY_NONE 	0
 #define MODBUS_PARITY_ODD 	1

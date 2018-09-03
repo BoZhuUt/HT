@@ -7,10 +7,10 @@
 #include "spi.h"
 #include "switch.h"
 
-#define TIME_DELAY 15
+#define TIME_DELAY 200
 
 #define ERR_SINGNAL_TOO_LOW 0x01
 
 void measure(void);
-
+u8 slopeCalib(float solution);
 #endif

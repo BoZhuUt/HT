@@ -60,5 +60,6 @@ void write_to_LTC2630ISC6(u8 Cmd, u16 Dat);
 
 void ADS1120_Init(void);
 void ADS1120_ReadChannel(u8 channel,u16 times);
+void ads1120ReadChannel(u8 channel,u16 times);
 
 #endif

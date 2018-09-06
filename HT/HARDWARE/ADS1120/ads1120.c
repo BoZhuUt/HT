@@ -242,7 +242,52 @@ void ADS1120_Init(void)
 {
 	ADS1120_GPIOInit();
 }
-  
+/***************************************************************************
+* Function Name:  CofigAD(unsigned char channel)	
+* Purpose: 	  set the sampling channel
+* Params :        
+*
+*************************************************************************/
+void cofigAD(unsigned char channel)
+{
+    switch(channel)
+    {
+    case T420: Init_Config[0] = 0x81;//AIN0 , GAIN=1 , PGA disabled
+            break;
+    case S365: Init_Config[0] = 0x94;//AIN1 , GAIN=4 , PGA enabled
+            break;
+    case T365: Init_Config[0] = 0xA1;//AIN2 , GAIN=1 , PGA disabled
+            break;
+    case S420: Init_Config[0] = 0xB2;//AIN3 , GAIN=2 , PGA enabled
+            break;
+    }
+    Init_Config[1] = 0X04;//continuous conversion mode
+    Init_Config[2] = 0X40;//Init_Config[2] = 0X56;
+    Init_Config[3] = 0X00; //0x80
+    WriteRegister(0x00,0x04,Init_Config);
+    ReadRegister();
+}
+/***************************************************************************
+* Function Name:  ads1120ReadChannel(u8 channel,u16 times)	
+* Purpose: 	  get the result 
+* Params :    Result 0~65535
+*
+*************************************************************************/
+void ads1120ReadChannel(u8 channel,u16 times)
+{
+	u16 j=0;
+	float sum=0.0;
+	cofigAD(channel);
+	ADStartConversion();
+	for(j=0;j<times;j++)
+	{
+		while(READ_ADS1120_DRDY);
+		sum+=ReadData();
+	}
+	sum=sum/(float)times;
+	ADPowerDown();
+	adcResults[channel]=sum;
+}  
 
 
 

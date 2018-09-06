@@ -41,6 +41,7 @@ int main()
 	TIM2_MeasureInit();
 	TIM1_ModpollInit();
 	TMP122_Init();
+	//write_to_LTC2630ISC6(0X30,sensor_param.cs365);
 	
 // 	Configure_IWDG();  //≈‰÷√ø¥√≈π∑
 	
@@ -57,11 +58,12 @@ int main()
 		{
 			isMeasureFlg=0;
 			__disable_irq() ;
-			//measure_values.sensorValue=TMP122_CalTemp();
+//			measure_values.sensorValue=TMP122_CalTemp();
 			__enable_irq() ;
 			measure();
 			AD5410_IOUT(measure_values.sensorValue_mA);
 		}
+
 	}
 }
 

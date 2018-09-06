@@ -12,6 +12,7 @@ u16 dark[4]={1};
 	for(j=0;j<4;j++)
 	{
 		ADS1120_ReadChannel(j,20);
+		//ads1120ReadChannel(j,20);
 		dark[j]=adcResults[j];
 	}
 	turnOnLed2();

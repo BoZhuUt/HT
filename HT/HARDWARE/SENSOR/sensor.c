@@ -2,11 +2,27 @@
 #include "app.h"
 
 u16 dark[4]={1};
-
+u8	GAIN;
  void measure(void)
 {
 	u8 j=0;
+	u16 CS365;
 	float fluorescein;
+	GAIN=0x94;
+	turnOnLed2();
+	write_to_LTC2630ISC6(0X30,sensor_param.cs365);
+	delay_ms(TIME_DELAY*2);
+	ADS1120_ReadChannel(S365,10);
+	sensor_param.t365=adcResults[S365];
+	if(adcResults[S365]>=33000)
+	{
+		GAIN=0x90;
+		CS365=sensor_param.ct365;
+	} 
+	else
+	{
+		CS365=sensor_param.cs365;
+	}
 	turnOffLeds();
 	delay_ms(TIME_DELAY);
 	for(j=0;j<4;j++)
@@ -17,7 +33,7 @@ u16 dark[4]={1};
 	}
 	turnOnLed2();
 	sensor_param.darks365=dark[S365];
-	write_to_LTC2630ISC6(0X30,sensor_param.cs365);
+	write_to_LTC2630ISC6(0X30,CS365);
 	delay_ms(TIME_DELAY);
 	ADS1120_ReadChannel(S365,50);
 	if(adcResults[S365]>dark[S365])
@@ -38,7 +54,9 @@ u16 dark[4]={1};
 	else
 	{
 		sensor_param.errorCode|=ERR_SINGNAL_TOO_LOW;
-	}	
+	}
+    turnOnLed1();
+    delay_ms(500);
 	turnOffLeds();
 	fluorescein=sensor_param.slope*((float)sensor_param.s365/(float)sensor_param.s365di-1.0)/((float)sensor_param.s420/(float)sensor_param.s420di);
 	if(fluorescein<0) fluorescein=0;

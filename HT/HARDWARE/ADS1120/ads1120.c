@@ -193,7 +193,7 @@ void CofigAD(unsigned char channel)
     {
     case T420: Init_Config[0] = 0x81;//AIN0 , GAIN=1 , PGA disabled
             break;
-    case S365: Init_Config[0] = 0x94;//AIN1 , GAIN=4 , PGA enabled
+    case S365: Init_Config[0] = GAIN;//AIN1 , GAIN=4 , PGA enabled
             break;
     case T365: Init_Config[0] = 0xA1;//AIN2 , GAIN=1 , PGA disabled
             break;
@@ -254,7 +254,7 @@ void cofigAD(unsigned char channel)
     {
     case T420: Init_Config[0] = 0x81;//AIN0 , GAIN=1 , PGA disabled
             break;
-    case S365: Init_Config[0] = 0x94;//AIN1 , GAIN=4 , PGA enabled
+    case S365: Init_Config[0] = GAIN;//AIN1 , GAIN=4 , PGA enabled
             break;
     case T365: Init_Config[0] = 0xA1;//AIN2 , GAIN=1 , PGA disabled
             break;

@@ -7,7 +7,7 @@
 #include "spi.h"
 #include "switch.h"
 
-#define TIME_DELAY 200
+#define TIME_DELAY 20
 
 #define ERR_SINGNAL_TOO_LOW 0x01
 

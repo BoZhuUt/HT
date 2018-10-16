@@ -54,6 +54,7 @@ enum ADC_CHANNEL
 };
 
 extern u16 adcResults[4];
+extern u8 GAIN;
 
 void LTC2630ISC6_Init(void );
 void write_to_LTC2630ISC6(u8 Cmd, u16 Dat);

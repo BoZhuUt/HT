@@ -41,20 +41,18 @@ int main()
 	TIM2_MeasureInit();
 	TIM1_ModpollInit();
 	TMP122_Init();
-	//write_to_LTC2630ISC6(0X30,sensor_param.cs365);
-	
 // 	Configure_IWDG();  //≈‰÷√ø¥√≈π∑
 	
  	RestoreModbusReg(); 
 		
  	eMBInit(MB_RTU, comm_settings.modbusAddr, 0x02, comm_settings.modbusBaud, comm_settings.modbusParity);
   eMBEnable(); 
-	
+	write_to_LTC2630ISC6(0X30,1000);
   while(1)
  { 	
 		FunctionPoll(); 
     AD5410_IOUT(measure_values.sensorValue_mA);	 
-	  if(isMeasureFlg==1)
+//	  if(isMeasureFlg==1)
 		{
 			isMeasureFlg=0;
 			__disable_irq() ;
@@ -63,7 +61,6 @@ int main()
 			measure();
 			AD5410_IOUT(measure_values.sensorValue_mA);
 		}
-
 	}
 }
 

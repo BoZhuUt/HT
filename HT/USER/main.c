@@ -3,7 +3,9 @@
 #include "sensor.h"
 #include "ad5410.h"
 #include "tmp122.h"
-
+#include "temperature.h"
+#include "PGA113.h"
+#include "ad5060.h"
 
 void Configure_IWDG(void)
 {
@@ -41,9 +43,13 @@ int main()
 	TIM2_MeasureInit();
 	TIM1_ModpollInit();
 	TMP122_Init();
+    AD7792Init();
+    PGA113_GPIOInit();
 // 	Configure_IWDG();  //≈‰÷√ø¥√≈π∑
 	
  	RestoreModbusReg(); 
+     ad5060GpioInit();
+     ad5060Out(6553);
 		
  	eMBInit(MB_RTU, comm_settings.modbusAddr, 0x02, comm_settings.modbusBaud, comm_settings.modbusParity);
   eMBEnable(); 
@@ -51,16 +57,26 @@ int main()
   while(1)
  { 	
 		FunctionPoll(); 
-    AD5410_IOUT(measure_values.sensorValue_mA);	 
-//	  if(isMeasureFlg==1)
+        //AD5410_IOUT(measure_values.sensorValue_mA);	 
+	  if(isMeasureFlg==1)
 		{
 			isMeasureFlg=0;
 			__disable_irq() ;
-//			measure_values.sensorValue=TMP122_CalTemp();
+            measure_values.sensorValue_mA=TMP122_CalTemp();
 			__enable_irq() ;
 			measure();
-			AD5410_IOUT(measure_values.sensorValue_mA);
+            measure_values.sensorValue=temperatureRead();
+			//AD5410_IOUT(measure_values.sensorValue_mA);
 		}
+        //ad5060Out(sensor_param.t365di);
+//     turnOffLeds();
+//     write_to_LTC2630ISC6(0X30,1000);
+//     delay_ms(300);
+//     turnOnLed1();
+//     delay_ms(300);
+//     turnOnLed2();
+//     delay_ms(300);
 	}
+     
 }
 

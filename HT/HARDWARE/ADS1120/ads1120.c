@@ -191,9 +191,9 @@ void CofigAD(unsigned char channel)
 {
     switch(channel)
     {
-    case T420: Init_Config[0] = 0x81;//AIN0 , GAIN=1 , PGA disabled
+    case T420: Init_Config[0] = 0x21;//AIN0 , GAIN=1 , PGA disabled
             break;
-    case S365: Init_Config[0] = GAIN;//AIN1 , GAIN=4 , PGA enabled
+    case S365: Init_Config[0] = GAIN;//AIN1-AIN3 , GAIN=32 , PGA enabled
             break;
     case T365: Init_Config[0] = 0xA1;//AIN2 , GAIN=1 , PGA disabled
             break;
@@ -217,6 +217,8 @@ u16 GetAD(unsigned char channel)
 {
     int16_t Result;
     CofigAD(channel);
+    __NOP;
+    __NOP;
     ADStartConversion();
     while(READ_ADS1120_DRDY);
     Result = ReadData();

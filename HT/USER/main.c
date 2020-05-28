@@ -24,7 +24,7 @@ void Configure_IWDG(void)
 
 u16 test=0;
 int main()
-{
+  {
 	#define VECT_TAB_OFFSET  0x3000
 
 	/* Set the Vector Table base address */
@@ -49,24 +49,21 @@ int main()
 	
  	RestoreModbusReg(); 
      ad5060GpioInit();
-     ad5060Out(6553);
 		
  	eMBInit(MB_RTU, comm_settings.modbusAddr, 0x02, comm_settings.modbusBaud, comm_settings.modbusParity);
   eMBEnable(); 
 	write_to_LTC2630ISC6(0X30,1000);
   while(1)
  { 	
-		FunctionPoll(); 
-        //AD5410_IOUT(measure_values.sensorValue_mA);	 
+		FunctionPoll(); 	 
 	  if(isMeasureFlg==1)
 		{
 			isMeasureFlg=0;
-			__disable_irq() ;
-            measure_values.sensorValue_mA=TMP122_CalTemp();
-			__enable_irq() ;
+			//__disable_irq() ;
 			measure();
-            measure_values.sensorValue=temperatureRead();
-			//AD5410_IOUT(measure_values.sensorValue_mA);
+			//__enable_irq() ;
+      measure_values.temperatureValue=temperatureRead();
+			AD5410_IOUT(measure_values.sensorValue_mA);
 		}
         //ad5060Out(sensor_param.t365di);
 //     turnOffLeds();

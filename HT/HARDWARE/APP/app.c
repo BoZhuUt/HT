@@ -40,7 +40,7 @@ void SENSOR_MeasureParameterReset(void)
 	system_status.commStatus=0;
 	system_status.calibStatus=0;     //0  ±Í∂®ø’œ–
 	system_status.configStatus=1;    //0  Œ¥≈‰÷√    1 “—≈‰÷√
-	system_status.productNum=65535;
+	system_status.productNum=50687;
 	system_status.t365gain=1;
 	system_status.s365gain=1;
 	system_status.t420gain=1;

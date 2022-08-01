@@ -131,8 +131,8 @@ typedef	struct sensorParam
 	float			fluoresceinHighSlope;          /*48037   32bit integer   r/w */
 	float			fluoresceinLowintercept;       /*48039   32bit integer   r/w */
 	float			fluoresceinHighintercept;      /*48041  32bit integer   r/w */
-    uint16      s365Gain;
-    uint16      t420Gan;
+  uint16      s365Gain;
+  uint16      t420Gan;
 	uint16		reserved[6];				/* 48044-48050   reserved */	
 } SENSOR_PARAM_T;
 
